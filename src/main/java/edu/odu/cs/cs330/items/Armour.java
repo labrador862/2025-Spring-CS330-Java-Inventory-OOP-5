@@ -83,7 +83,12 @@ public class Armour extends Equippable implements Item
 
         Armour rhsItem = (Armour) rhs;
 
-        return false;
+        return  Objects.equals(this.getName(), rhsItem.getName()) &&
+                Objects.equals(this.getMaterial(), rhsItem.getMaterial()) &&
+                Objects.equals(this.getModifier(), rhsItem.getModifier()) &&
+                Objects.equals(this.getElement(), rhsItem.getElement()) &&
+                this.defense == rhsItem.defense &&
+                this.getModifierLevel() == rhsItem.getModifierLevel();
     }
 
     /**
@@ -94,7 +99,12 @@ public class Armour extends Equippable implements Item
     public int hashCode()
     {
         return Objects.hash(
-            this.getName()
+            this.getName(),
+            this.defense,
+            this.getMaterial(),
+            this.getModifier(),
+            this.getModifierLevel(),
+            this.getElement()
         );
     }
 
@@ -104,7 +114,14 @@ public class Armour extends Equippable implements Item
     @Override
     public String toString()
     {
-        return "Use the provided format string";
+        return String.format(FMT_STR, 
+        this.getName(), 
+        this.getDurability(), 
+        this.defense, 
+        this.getMaterial(), 
+        this.getModifier(), 
+        this.getModifierLevel(), 
+        this.getElement());
     }
 }
 

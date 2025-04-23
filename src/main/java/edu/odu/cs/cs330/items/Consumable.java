@@ -108,7 +108,7 @@ public class Consumable implements Item {
 
         Consumable rhsItem = (Consumable) rhs;
 
-        return false;
+        return this.name.equals(rhsItem.name) && this.effect.equals(rhsItem.effect);
     }
 
     /**
@@ -120,7 +120,7 @@ public class Consumable implements Item {
     @Override
     public int hashCode()
     {
-        return -1;
+        return this.name.hashCode() + this.effect.hashCode();
     }
 
     /**
@@ -129,6 +129,6 @@ public class Consumable implements Item {
     @Override
     public String toString()
     {
-        return "Not Implemented";
+        return String.format(FMT_STR, this.name, this.effect, this.uses);
     }
 }
